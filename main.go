@@ -42,12 +42,12 @@ func (w Worker) Start() {
 			w.WorkerPool <- w.JobQueue
 			select {
 			case job := <-w.JobQueue:
-				fmt.Printf("Worker whit id %d started.\n", w.Id)
+				fmt.Printf("Worker with id %d started.\n", w.Id)
 				fib := Fibonacci(job.Number)
 				time.Sleep(job.Delay)
-				fmt.Printf("Worker whit id %d finished. Result: %d. Name: %s.\n", w.Id, fib, job.Name)
+				fmt.Printf("Worker with id %d finished. Result: %d. Name: %s.\n", w.Id, fib, job.Name)
 			case <-w.QuitChan:
-				fmt.Printf("Worker whit id %d stopped.\n.", w.Id)
+				fmt.Printf("Worker with id %d stopped.\n.", w.Id)
 
 			}
 		}
